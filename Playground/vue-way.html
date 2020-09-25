@@ -12,7 +12,11 @@
         var div = document.querySelector('#app');
         var viewModel = {};
 
-        //Object.defineProperty(대상객체, 객체속성)
+        //즉시 실행 함수
+        (function(){
+            
+        function init(){
+                    //Object.defineProperty(대상객체, 객체속성)
         Object.defineProperty(viewModel,'str',{
              //속성에 접근했을 때의 동작을 정의
             get: function(){
@@ -21,9 +25,19 @@
             //속성의 값을 할당했을 때의 동작을 정의
             set: function(newValue){
                 console.log('Set', newValue);
-                div.innerHTML = newValue;
+                render(newValue);
             }
-        })
+        });
+        }
+
+        function render(value){
+            div.innerHTML = value;
+        }
+
+        init();
+        })();
+
+
     </script>
 </body>
 </html>
